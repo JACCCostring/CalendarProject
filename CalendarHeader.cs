@@ -28,7 +28,6 @@ partial class Calendar
     public void setWorkDayStartAndStop(DateTime _sTime, DateTime _eTime){
             sTime = _sTime; //setting start and stop time
             eTime = _eTime;//Day, Month and Year is disregard
-            Console.WriteLine("sTime: "+ holiday);
     }
     public void printWorkDate(DateTime start, double increment, DateTime result){
                     Console.WriteLine(//printing and formatting date 
