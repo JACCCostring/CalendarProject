@@ -25,48 +25,20 @@ partial class Calendar
         recurringHoliday = recurrentDate; //setting recurring date
     }
 
-    public void setWorkDayStartAndStop(DateTime _sTime, DateTime _eTime){
-            sTime = _sTime; //setting start and stop time
-            eTime = _eTime;//Day, Month and Year is disregard
-            Console.WriteLine("sTime: "+ holiday);
-    }
-    public void printWorkDate(DateTime start, double increment, DateTime result){
-                    Console.WriteLine(//printing and formatting date 
-                    start.ToString("dd/MM/yyyy HH:mm:ss")+ 
-                    " with the addition of "+increment+" Working days is "+
-                    result.ToString("dd/MM/yyyy HH:mm:ss")
-                    );
-    }
-    private int getNumDays(DateTime numofDays, List<DateTime> listHoly, double numDays){
-        DateTime newDate = numofDays.AddDays(numDays);//adding days e.x 01/05/2004 + 4
-        int count = 0;                               //= 06/05/2004         
-        int excluded = 0;                     
-
-        for(DateTime date = numofDays.AddDays(1); date <= newDate.AddDays(1); date = date.AddDays(1))
-        {
-            if(date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday
-                )
-                {
-                count++; //incrementing count debuging pourpus
+    public void getDate(DateTime initDate, int increment){
+        DateTime startDate = initDate;
+        int x = 0;
+        for(int counter = 0; counter <= increment; counter++){
+                if(startDate.DayOfWeek != DayOfWeek.Saturday && startDate.DayOfWeek != DayOfWeek.Sunday){
+                    //startDate = startDate.AddDays(1);
+                    Console.WriteLine(startDate.ToString("dd/MM/yyyy"));
+                    x++;
                 }
-                else{excluded++;} //incrementing for returning later
-                numofDays = numofDays.AddDays(1); //adding day by 1 
+                else{startDate = startDate.AddDays(1);}
+                startDate = startDate.AddDays(1);
         }
-        Console.WriteLine("Counted Days: "+count); //commented line debugin pourpus 
-        Console.WriteLine("Excluded Days: "+excluded); //commented line debugin pourpus
-        return excluded-1; //returning values - 1
+        int op = x / 7 * 2;
+        Console.WriteLine("Final Date: "+startDate.AddDays(op).ToString("dd/MM/yyyy"));
+        Console.WriteLine("x: "+x);
     }
-    public DateTime getWorkDayIncrement(DateTime startDate, double increment)
-    {
-        List<DateTime> listHolidays = new List<DateTime>(); //list for adding holiday
-        //adding holiday and recurring date to list (holiday/reccurringH.. allready exist)
-        listHolidays.Add(holiday);//adding holiday 
-        listHolidays.Add(recurringHoliday);//and it can be retrieve in the future
-        //getting values from private method
-        int numDays = getNumDays(startDate, listHolidays, increment);//getting weekends and holiday
-        double hoursCalc = startDate.Hour + increment;//calculating hours
-        DateTime DateToReturn = startDate.AddDays(increment + numDays);//incrementing days and assigining                //to a new instance 
-                                                                      //new Date to DateToReturn               
-    return DateToReturn.AddHours(hoursCalc);//adding hours and returning modified Date
-    }//end of getWorkdayIncrement method
-}//end of namespace
+}
