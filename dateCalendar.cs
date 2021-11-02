@@ -17,7 +17,6 @@ static void Main(string[] args)
     DateTime result = newCalendar.getWorkDayIncrement(start, increment);
     //calling printing method
     newCalendar.printWorkDate(start, increment, result);
-    //newCalendar.getDays(start, increment);
 }
 
 }
