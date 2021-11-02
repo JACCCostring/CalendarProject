@@ -7,7 +7,7 @@ static void Main(string[] args)
     newCalendar.setRecurringHoliday(new DateTime(2004, 05, 17, 0, 0, 0));
     newCalendar.setHoliday(new DateTime(2004, 05, 27));
     //increment
-    double increment = -6; 
+    double increment = 44.72; 
     //start date                  Year/Month/Day HH:MM:SS   
     DateTime start = new DateTime(2004, 05, 24, 19, 03, 0);
     //start and end time                        Year/Month/Day HH:MM:SS

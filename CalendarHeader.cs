@@ -37,38 +37,6 @@ partial class Calendar
                     result.ToString("dd/MM/yyyy HH:mm:ss")
                     );
     }
-
-    private void addToDate(DateTime addDate, double addTo){
-        DateTime testTime = addDate.AddDays(addTo);
-        Console.WriteLine("added date: "+testTime.ToString("dd/MM/yyyy"));
-        for(DateTime date = addDate; date <= testTime; date = date.AddDays(1)){
-        if(addDate.DayOfWeek != DayOfWeek.Saturday || addDate.DayOfWeek != DayOfWeek.Sunday){
-            //addDate = addDate.AddDays(1);
-        }
-        else{addDate = addDate.AddDays(1);}
-        }
-        Console.WriteLine("added date: "+addDate.ToString("dd/MM/yyyy"));
-    }
-    public int getDays(DateTime numofDays, double numDays){
-        DateTime newDate = numofDays.AddDays(numDays);//adding days e.x 01/05/2004 + 4
-        int count = 0;                               //= 06/05/2004         
-        int excluded = 0;                     
-
-        for(DateTime date = numofDays; date <= newDate; date = date.AddDays(1))
-        {
-            if(date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
-                {
-                count++; //incrementing count debuging purpose
-                }
-                else{excluded++;} //incrementing for returning later
-                numofDays = numofDays.AddDays(1); //adding day by 1 
-        }
-        Console.WriteLine("Counted Days: "+count); //commented line debugin purpose 
-        Console.WriteLine("Excluded Days: "+excluded); //commented line debugin purpose
-        //Console.WriteLine("num of Days: "+numofDays.AddDays(excluded).ToString("dd/MM/yyyy"));
-        addToDate(numofDays, excluded);
-        return excluded-1; //returning values - 1
-    }
     private int getNumDays(DateTime numofDays, List<DateTime> listHoly, double numDays){
         DateTime newDate = numofDays.AddDays(numDays);//adding days e.x 01/05/2004 + 4
         int count = 0;                               //= 06/05/2004         
@@ -84,8 +52,8 @@ partial class Calendar
                 else{excluded++;} //incrementing for returning later
                 numofDays = numofDays.AddDays(1); //adding day by 1 
         }
-        Console.WriteLine("Counted Days: "+count); //commented line debugin pourpus 
-        Console.WriteLine("Excluded Days: "+excluded); //commented line debugin pourpus
+        //Console.WriteLine("Counted Days: "+count); //commented line debugin pourpus 
+        //Console.WriteLine("Excluded Days: "+excluded); //commented line debugin pourpus
         return excluded-1; //returning values - 1
     }
     public DateTime getWorkDayIncrement(DateTime startDate, double increment)
