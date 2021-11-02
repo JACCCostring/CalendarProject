@@ -23,4 +23,4 @@ issues: Bussiness logic is doing what it's requaired adding days to an existing 
 
 Solution: Set the Date only if day element in calendar is not Weekend or holiday incrementing forward or backward in calendar DateTime.
 
-I found a better solution in C++ but still some pitfulls
+I found a better solution in C++ but still some pitfulls.
