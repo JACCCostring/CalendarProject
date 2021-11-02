@@ -25,20 +25,36 @@ partial class Calendar
         recurringHoliday = recurrentDate; //setting recurring date
     }
 
-    public void getDate(DateTime initDate, int increment){
+    public void getDate(DateTime initDate, double increment){
         DateTime startDate = initDate;
         int x = 0;
+        double converted = 6.5;
+ 
+        if(increment<0){//if increment its a negative value
+        //increment = 0;
+        Console.WriteLine("negative");
+           for(int counter = 0; counter <= converted; counter++){
+                if(startDate.DayOfWeek != DayOfWeek.Saturday && startDate.DayOfWeek != DayOfWeek.Sunday){
+                    Console.WriteLine(startDate.ToString("dd/MM/yyyy"));
+                    startDate = startDate.AddDays(-1);
+                    x--;
+                }
+                startDate = startDate.AddDays(-1);
+        }
+        //if increment is not negative 
+        }
+        else{
         for(int counter = 0; counter <= increment; counter++){
                 if(startDate.DayOfWeek != DayOfWeek.Saturday && startDate.DayOfWeek != DayOfWeek.Sunday){
-                    //startDate = startDate.AddDays(1);
                     Console.WriteLine(startDate.ToString("dd/MM/yyyy"));
-                    x++;
+                    x++;//incrementing x to handle days later on Date
                 }
                 else{startDate = startDate.AddDays(1);}
                 startDate = startDate.AddDays(1);
         }
+        }
         int op = x / 7 * 2;
         Console.WriteLine("Final Date: "+startDate.AddDays(op).ToString("dd/MM/yyyy"));
-        Console.WriteLine("x: "+x);
+        Console.WriteLine("decremented: "+x);
     }
 }
